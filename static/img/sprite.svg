@@ -129,4 +129,18 @@
   <symbol id="" fill="none">
 
   </symbol>
+
+  <symbol id="abstract-figures" viewBox="0 0 544 272" fill="none">
+    <path opacity="0.5" d="M1 271V2.41421L269.586 271H1Z" stroke="#C4C4C4" stroke-width="2"/>
+    <rect opacity="0.5" x="137" y="1" width="270" height="270" rx="135" stroke="#C4C4C4" stroke-width="2"/>
+    <rect opacity="0.5" x="273" y="1" width="270" height="270" stroke="#C4C4C4" stroke-width="2"/>
+  </symbol>
+
+  <symbol id="arrow" viewBox="0 0 30 30" fill="none">
+    <path d="M30 30L30 3.33333L25 3.33333L25 21.6667L3.33333 -1.16564e-06L-1.45705e-07 3.33333L21.6667 25L3.33333 25L3.33333 30L30 30Z" fill="#131315"/>
+  </symbol>
+
+  <symbol id="arrow-top" viewBox="0 0 12 12" fill="none">
+    <path d="M12 0H1.33333V2H8.66667L0 10.6667L1.33333 12L10 3.33333V10.6667H12V0Z" fill="white"/>
+  </symbol>
 </svg>

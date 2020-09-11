@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "@nuxtjs/style-resources": "^1.0.0",
+    "focus-visible": "^5.1.0",
     "gsap": "^3.5.1",
-    "nuxt": "^2.13.0"
+    "nuxt": "^2.13.0",
+    "scroll-lock": "^2.1.4",
+    "swiper": "^6.2.0"
   },
   "devDependencies": {
     "less": "^3.12.2",
