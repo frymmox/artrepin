@@ -9,9 +9,41 @@
             </div>
 
             <div class="services__image">
-              <svg width="374" height="374">
-                <use href="/img/services.svg#ui-design"></use>
-              </svg>
+              <transition name="fade">
+                <svg v-show="activeCategory === 0" width="374" height="374">
+                  <use href="/img/services.svg#ui-design"></use>
+                </svg>
+              </transition>
+
+              <transition name="fade">
+                <svg v-show="activeCategory === 1" width="376" height="351">
+                  <use href="/img/services.svg#branding"></use>
+                </svg>
+              </transition>
+
+              <transition name="fade">
+                <svg v-show="activeCategory === 2" width="345" height="345">
+                  <use href="/img/services.svg#mobile-app"></use>
+                </svg>
+              </transition>
+
+              <transition name="fade">
+                <svg v-show="activeCategory === 3" width="350" height="352">
+                  <use href="/img/services.svg#motion-design"></use>
+                </svg>
+              </transition>
+
+              <transition name="fade">
+                <svg v-show="activeCategory === 4" width="381" height="352">
+                  <use href="/img/services.svg#graphic-design"></use>
+                </svg>
+              </transition>
+
+              <transition name="fade">
+                <svg v-show="activeCategory === 5" width="347" height="361">
+                  <use href="/img/services.svg#marketing"></use>
+                </svg>
+              </transition>
             </div>
           </div>
 
@@ -27,7 +59,8 @@
                 <li
                   class="list-services__item"
                   v-for="(item, index) of services"
-                  :key="index">
+                  :key="index"
+                  @mouseenter="setActiveCategory(index)">
                   <div class="list-services__number">
                     0{{index + 1}}
                   </div>
@@ -71,6 +104,7 @@
   export default {
     data() {
       return {
+        activeCategory: 0,
         services: [
           {
             title: 'UI/UX Design',
@@ -128,6 +162,11 @@
           },
         ]
       }
+    },
+    methods: {
+      setActiveCategory(index) {
+        this.activeCategory = index
+      },
     }
   }
 </script>
@@ -191,6 +230,7 @@
   .services__image {
     svg {
       max-width: 100%;
+      position: absolute;
     }
 
     @media (max-width: @breakpoint-lg - 1px) {
@@ -295,5 +335,19 @@
         padding-right: 16px;
       }
     }
+  }
+
+  // animation
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition-duration: 0.35s;
+    transition-timing-function: ease-out;
+    transition-property: opacity;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
   }
 </style>

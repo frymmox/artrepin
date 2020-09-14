@@ -164,7 +164,12 @@
 
       const slider = new Swiper(this.$refs.slider, {
         slidesPerView: 'auto',
-        spaceBetween: 120,
+        spaceBetween: 24,
+        breakpoints: {
+          768: {
+            spaceBetween: 120,
+          },
+        },
         pagination: {
           el: '.swiper-pagination',
           type: 'fraction',
@@ -189,6 +194,8 @@
   }
 
   .clients__slide {
+    width: 85% !important;
+
     @media (min-width: @breakpoint-md) {
       width: 66.66% !important;
     }
@@ -210,13 +217,17 @@
 
   .card-client {
     display: flex;
-    height: 490px;
     border-radius: 24px 24px 24px 0px;
     overflow: hidden;
     background-color: #fff;
 
     @media (max-width: @breakpoint-md - 1px) {
       flex-direction: column;
+      padding: 24px;
+    }
+
+    @media (min-width: @breakpoint-md) {
+      height: 490px;
     }
   }
 
@@ -224,6 +235,11 @@
     position: relative;
     overflow: hidden;
     width: 40%;
+
+    @media (max-width: @breakpoint-md - 1px) {
+      width: 45%;
+      margin-bottom: 24px;
+    }
   }
 
   .card-client__image {
@@ -251,19 +267,34 @@
   }
 
   .card-client__main {
-    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (min-width: @breakpoint-md) {
+      width: 60%;
+    }
   }
 
   .card-client__header {
-    margin-bottom: 36px;
+    margin-bottom: 24px;
+
+    @media (min-width: @breakpoint-md) {
+      margin-bottom: 36px;
+    }
   }
 
   .card-client__name {
     font-size: 1.875rem;
     line-height: 2.25rem;
+  }
+
+  .card-client__text {
+    margin-bottom: 24px;
+
+    @media (min-width: @breakpoint-md) {
+      margin-bottom: 32px;
+    }
   }
 
   .card-client__company {

@@ -4,6 +4,8 @@
 
     <the-works />
 
+    <favorite-clients />
+
     <the-services />
 
     <the-cources />
@@ -16,6 +18,7 @@
   import TheMain from "@/components/TheMain"
   import TheAbout from "@/components/TheAbout"
   import TheWorks from "@/components/TheWorks"
+  import FavoriteClients from "@/components/FavoriteClients"
   import TheServices from "@/components/TheServices"
   import TheCources from "@/components/TheCources"
   import TheClients from "@/components/TheClients"
@@ -27,6 +30,7 @@
       TheMain,
       TheAbout,
       TheWorks,
+      FavoriteClients,
       TheCources,
       TheClients
     },
