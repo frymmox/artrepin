@@ -88,7 +88,7 @@
       gsap.set(".cover-section__content", {height: document.querySelector('.cover-section__content').offsetHeight});
 
       const animation = gsap.timeline();
-      animation.to(".cover-section__page-1", {y: -document.querySelector('.cover-section__page-1').offsetHeight})
+      animation.to(".cover-section__page-1", {top: -document.querySelector('.cover-section__page-1').offsetHeight})
         .to(".cover-section__bounds", {top: -document.querySelector('.cover-section__bounds').offsetHeight})
         .to(".cover-section__page-3", {y: -document.querySelector('.cover-section__page-3').offsetHeight});
 

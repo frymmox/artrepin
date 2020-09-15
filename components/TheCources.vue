@@ -53,12 +53,22 @@
             </div>
           </div>
         </div>
+
+        <div class="grid__list">
+          <div class="grid__item">
+            <img src="/img/promo.jpg" width="1680" height="774" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <style lang="less">
+  .cources {
+    background-color: #fff;
+  }
+
   .cources__list {
     @media (min-width: @breakpoint-lg) {
       justify-content: space-between;

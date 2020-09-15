@@ -158,6 +158,10 @@
 </template>
 
 <style lang="less">
+  .works {
+    background-color: #fff;
+  }
+
   .works__header {
     display: flex;
     flex-wrap: wrap;

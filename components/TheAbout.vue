@@ -67,6 +67,10 @@
 </template>
 
 <style lang="less">
+  .about {
+    background-color: #fff;
+  }
+
   .about__list {
     @media (min-width: @breakpoint-lg) {
       justify-content: space-between;
@@ -132,6 +136,7 @@
   .about__image {
     svg {
       max-width: 100%;
+      height: auto;
     }
 
     @media (max-width: @breakpoint-lg - 1px) {

@@ -121,7 +121,7 @@
           this.$refs.oneLast.classList.remove('in')
           this.$refs.oneLast.classList.add('out')
         }
-      }, 10000)
+      }, 5000)
 
       setTimeout(() => {
         setInterval(() => {
@@ -140,8 +140,8 @@
             this.$refs.twoLast.classList.remove('in')
             this.$refs.twoLast.classList.add('out')
           }
-        }, 10000)
-      }, 1000)
+        }, 5000)
+      }, 500)
 
       setTimeout(() => {
         setInterval(() => {
@@ -160,8 +160,8 @@
             this.$refs.threeLast.classList.remove('in')
             this.$refs.threeLast.classList.add('out')
           }
-        }, 10000)
-      }, 2000)
+        }, 5000)
+      }, 1000)
 
       setTimeout(() => {
         setInterval(() => {
@@ -180,8 +180,8 @@
             this.$refs.fourLast.classList.remove('in')
             this.$refs.fourLast.classList.add('out')
           }
-        }, 10000)
-      }, 3000)
+        }, 5000)
+      }, 1500)
 
       setTimeout(() => {
         setInterval(() => {
@@ -200,8 +200,8 @@
             this.$refs.fiveLast.classList.remove('in')
             this.$refs.fiveLast.classList.add('out')
           }
-        }, 10000)
-      }, 4000)
+        }, 5000)
+      }, 2000)
 
       setTimeout(() => {
         setInterval(() => {
@@ -220,8 +220,8 @@
             this.$refs.sixLast.classList.remove('in')
             this.$refs.sixLast.classList.add('out')
           }
-        }, 10000)
-      }, 5000)
+        }, 5000)
+      }, 2500)
 
       setTimeout(() => {
         setInterval(() => {
@@ -240,8 +240,8 @@
             this.$refs.sevenLast.classList.remove('in')
             this.$refs.sevenLast.classList.add('out')
           }
-        }, 10000)
-      }, 6000)
+        }, 5000)
+      }, 3000)
 
       setTimeout(() => {
         setInterval(() => {
@@ -260,8 +260,8 @@
             this.$refs.eightLast.classList.remove('in')
             this.$refs.eightLast.classList.add('out')
           }
-        }, 10000)
-      }, 7000)
+        }, 5000)
+      }, 3500)
 
       setTimeout(() => {
         setInterval(() => {
@@ -280,8 +280,8 @@
             this.$refs.nineLast.classList.remove('in')
             this.$refs.nineLast.classList.add('out')
           }
-        }, 10000)
-      }, 8000)
+        }, 5000)
+      }, 4000)
 
       setTimeout(() => {
         setInterval(() => {
@@ -300,8 +300,8 @@
             this.$refs.tenLast.classList.remove('in')
             this.$refs.tenLast.classList.add('out')
           }
-        }, 10000)
-      }, 9000)
+        }, 5000)
+      }, 4500)
     }
   }
 </script>
@@ -309,6 +309,7 @@
 <style lang="less">
   .favorite-clients {
     padding-top: 0;
+    background-color: #fff;
   }
 
   .favorite-clients__header {
@@ -349,21 +350,21 @@
         position: absolute;
         top: 0;
         left: 0;
-        z-index: -1;
+        // z-index: -1;
       }
     }
   }
 
   .out {
     animation-name: out;
-    animation-duration: 0.7s;
-    animation-timing-function: cubic-bezier(0.550, 0.085, 0.680);
+    animation-duration: 0.2s;
+    animation-timing-function: cubic-bezier(0.550, 0.085, 0.680, 0.530);
     animation-fill-mode: both
   }
 
   .in {
     animation-name: in;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
     animation-fill-mode: both;
   }
@@ -374,14 +375,14 @@
       opacity: 1;
     }
     100% {
-      transform: translateY(-100%);
+      transform: translateY(-10%);
       opacity: 0;
     }
   }
 
   @keyframes in {
     0% {
-      transform: translateY(-100%);
+      transform: translateY(-10%);
       opacity: 0;
     }
     100% {
