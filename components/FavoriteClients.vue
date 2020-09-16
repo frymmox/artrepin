@@ -310,6 +310,7 @@
   .favorite-clients {
     padding-top: 0;
     background-color: #fff;
+    border-radius: 0 0 24px 24px;
   }
 
   .favorite-clients__header {

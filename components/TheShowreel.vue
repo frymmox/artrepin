@@ -2,7 +2,7 @@
   <section class="showreel">
     <div class="showreel__wrap">
       <div class="showreel__title">
-        <h1>Think. Create. Use it.</h1>
+        <h1>Ivan Repin's Creative Studio</h1>
       </div>
     </div>
 

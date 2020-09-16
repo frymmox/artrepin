@@ -1,6 +1,6 @@
 <template>
   <div class="cover-section">
-    <div class="cover-section__page  cover-section__page-1" style="z-index: 6;">
+    <div class="cover-section__page  cover-section__page-1" style="z-index: 5;">
       <div class="cover-section__wrapper">
         <div class="cover-section__bounds  cover-section__bounds--1">
           <div class="cover-section__content  cover-section__content--1">
@@ -9,15 +9,7 @@
             <the-about />
 
             <drag-text />
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="cover-section__page  cover-section__page-2"  style="z-index: 5;">
-      <div class="cover-section__wrapper">
-        <div class="cover-section__bounds  cover-section__bounds--2">
-          <div class="cover-section__content  cover-section__content--2">
             <the-works />
 
             <favorite-clients />
@@ -26,40 +18,40 @@
       </div>
     </div>
 
-    <div class="cover-section__page  cover-section__page-3"  style="z-index: 4;">
+    <div class="cover-section__page  cover-section__page-2"  style="z-index: 4;">
       <div class="cover-section__wrapper">
-        <div class="cover-section__bounds  cover-section__bounds--3">
-          <div class="cover-section__content  cover-section__content--3">
+        <div class="cover-section__bounds  cover-section__bounds--2">
+          <div class="cover-section__content  cover-section__content--2">
             <the-services />
           </div>
         </div>
       </div>
     </div>
 
-    <div class="cover-section__page  cover-section__page-4"  style="z-index: 3;">
+    <div class="cover-section__page  cover-section__page-3"  style="z-index: 3;">
       <div class="cover-section__wrapper">
-        <div class="cover-section__bounds  cover-section__bounds--4">
-          <div class="cover-section__content  cover-section__content--4">
+        <div class="cover-section__bounds  cover-section__bounds--3">
+          <div class="cover-section__content  cover-section__content--3">
             <the-cources />
           </div>
         </div>
       </div>
     </div>
 
-    <div class="cover-section__page  cover-section__page-5"  style="z-index: 2;">
+    <div class="cover-section__page  cover-section__page-4"  style="z-index: 2;">
       <div class="cover-section__wrapper">
-        <div class="cover-section__bounds  cover-section__bounds--5">
-          <div class="cover-section__content  cover-section__content--5">
+        <div class="cover-section__bounds  cover-section__bounds--4">
+          <div class="cover-section__content  cover-section__content--4">
             <the-clients />
           </div>
         </div>
       </div>
     </div>
 
-    <div class="cover-section__page  cover-section__page-6"  style="z-index: 1;">
+    <div class="cover-section__page  cover-section__page-5"  style="z-index: 1;">
       <div class="cover-section__wrapper">
-        <div class="cover-section__bounds  cover-section__bounds--6">
-          <div class="cover-section__content  cover-section__content--6">
+        <div class="cover-section__bounds  cover-section__bounds--5">
+          <div class="cover-section__content  cover-section__content--5">
             <the-footer />
           </div>
         </div>
@@ -98,7 +90,7 @@
     mounted() {
       gsap.registerPlugin(ScrollTrigger)
 
-      gsap.set(document.body, {height: document.querySelector('.cover-section__content--1').offsetHeight + document.querySelector('.cover-section__content--2').offsetHeight + document.querySelector('.cover-section__content--3').offsetHeight + document.querySelector('.cover-section__content--4').offsetHeight + document.querySelector('.cover-section__content--5').offsetHeight});
+      gsap.set(document.body, {height: document.querySelector('.cover-section__content--1').offsetHeight + document.querySelector('.cover-section__content--2').offsetHeight + document.querySelector('.cover-section__content--3').offsetHeight + document.querySelector('.cover-section__content--4').offsetHeight});
 
       gsap.set(".cover-section__bounds--1", {height: document.querySelector('.cover-section__content--1').offsetHeight});
 
@@ -108,41 +100,23 @@
 
       gsap.set(".cover-section__bounds--4", {height: document.querySelector('.cover-section__content--4').offsetHeight});
 
-      gsap.set(".cover-section__bounds--5", {height: document.querySelector('.cover-section__content--5').offsetHeight});
-
       const animation = gsap.timeline();
       animation.to(".cover-section__bounds--1", {y: -document.querySelector('.cover-section__bounds--1').offsetHeight, duration: 2, ease: 'none'})
+        .set(".cover-section__page-1", {zIndex: 1})
         .to(".cover-section__bounds--2", {y: -document.querySelector('.cover-section__bounds--2').offsetHeight, duration: 2, ease: 'none'})
+        .set(".cover-section__page-2", {zIndex: 1})
         .to(".cover-section__bounds--3", {y: -document.querySelector('.cover-section__bounds--3').offsetHeight, duration: 2, ease: 'none'})
-        .to(".cover-section__bounds--4", {y: -document.querySelector('.cover-section__bounds--4').offsetHeight, duration: 2, ease: 'none'})
-        .to(".cover-section__bounds--5", {y: -document.querySelector('.cover-section__bounds--5').offsetHeight, duration: 2, ease: 'none'});
+        .set(".cover-section__page-3", {zIndex: 1})
+        .to(".cover-section__bounds--4", {y: -document.querySelector('.cover-section__bounds--4').offsetHeight, duration: 2, ease: 'none'});
 
       ScrollTrigger.create({
         animation,
         trigger: 'body',
         start: 'top top',
-        scrub: 1,
+        scrub: true,
         end: 'bottom bottom',
         markers: true,
       })
-
-      const bodyScrollBar = Scrollbar.init(document.body, { damping: 0.1, delegateTo: document })
-
-      ScrollTrigger.scrollerProxy(document.body, {
-        scrollTop(value) {
-          if (arguments.length) {
-            bodyScrollBar.scrollTop = value
-          }
-          return bodyScrollBar.scrollTop
-        },
-        getBoundingClientRect() {
-          return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight}
-        }
-      });
-
-      bodyScrollBar.addListener(ScrollTrigger.update)
-
-      gsap.set('.scroll-content', {height: document.documentElement.clientHeight})
     }
   }
 </script>
@@ -175,15 +149,17 @@
   }
 
   .cover-section__bounds {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     position: absolute;
     overflow: hidden;
+    will-change: transform;
   }
 
   .cover-section__content {
     position: relative;
-    // overflow: visible;
+    overflow: visible;
     transform-origin: 0 0;
-    border-radius: 0 0 24px 24px;
-    overflow: hidden;
   }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <section class="scene  scene--full" style="background-color: #fff;">
     <div class="drag-text">
-      <h2 class="drag-text__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h2>
+      <div class="drag-text__wrap">
+        <h2 class="drag-text__text">Work Hard. Create masterpiece.</h2>
+      </div>
     </div>
   </section>
 </template>
@@ -16,15 +18,15 @@
 
       Draggable.create('.drag-text__text', {
         type: 'x',
-        bounds: document.querySelector('.drag-text'),
+        bounds: document.querySelector('.drag-text__wrap'),
         onPress: () => {
-          gsap.to('.drag-text', {scale: 0.7, duration: 0.35})
+          gsap.to('.drag-text__wrap', {scale: 0.7, duration: 0.35})
         },
         onRelease: () => {
-          gsap.to('.drag-text', {scale: 1, duration: 1})
+          gsap.to('.drag-text__wrap', {scale: 1, duration: 1})
         },
         onDrag: () => {
-          gsap.to('.drag-text', {scale: 0.7})
+          gsap.to('.drag-text__wrap', {scale: 0.7})
         }
       })
 
@@ -40,12 +42,16 @@
     height: 200px;
     width: 100%;
   }
+  .drag-text__wrap {
+    position: relative;
+    overflow: visible;
+  }
   .drag-text__text {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 150px;
-    line-height: 200px;
+    font-size: 14.125rem;
+    line-height: 17rem;
     white-space: nowrap;
   }
 </style>
