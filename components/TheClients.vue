@@ -186,7 +186,7 @@
 
 <style lang="less">
   .clients {
-    background-color: rgba(19, 19, 21, 0.1);
+    background-color: #d2d6da;
   }
 
   .clients__slider {

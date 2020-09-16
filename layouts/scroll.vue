@@ -20,11 +20,13 @@
 <style lang="less">
   .scroll {
     position: fixed;
-    left: 0;
+    left: 50%;
     top: 0;
     width: 100%;
+    max-width: 1680px;
     height: 100%;
     overflow: hidden;
+    transform: translateX(-50%);
   }
 
   .scroll__container {
