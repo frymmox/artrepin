@@ -90,7 +90,8 @@
     padding-top: var(--block-gap-vertical, @block-gap-vertical);
     padding-right: var(--block-gap-horizontal, @block-gap-horizontal);
     padding-left: var(--block-gap-horizontal, @block-gap-horizontal);
-    padding-bottom: var(--block-gap-vertical, @block-gap-vertical);
+    padding-bottom: var(--block-gap-horizontal, @block-gap-vertical);
+    min-height: 100vh;
   }
 
   .footer__wrap {
@@ -111,9 +112,9 @@
     }
 
     &--bottom {
-      padding-top: var(--block-gap-vertical, @block-gap-vertical);
+      padding-top: var(--block-gap-horizontal, @block-gap-vertical);
       border-top: 1px solid #98A5B1;
-      margin-top: var(--block-gap-vertical, @block-gap-vertical);
+      margin-top: var(--block-gap-horizontal, @block-gap-vertical);
 
       .footer__item {
         width: auto;

@@ -63,7 +63,6 @@
 <script>
   import {gsap} from 'gsap'
   import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
-  import Scrollbar from 'smooth-scrollbar'
 
   import TheShowreel from "@/components/TheShowreel"
   import TheAbout from "@/components/TheAbout"

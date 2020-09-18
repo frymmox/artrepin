@@ -1,6 +1,6 @@
 <template>
-  <section class="scene  scene--full" style="background-color: #fff;">
-    <div class="drag-text">
+  <section class="scene  scene--full  drag-text" style="background-color: #fff;">
+    <div class="drag-text__content">
       <div class="drag-text__wrap">
         <h2 class="drag-text__text">Work Hard. Create masterpiece.</h2>
       </div>
@@ -37,15 +37,23 @@
 <style lang="less">
   .drag-text {
     background-color: #fff;
+    @media (min-width: @breakpoint-xl) {
+      --block-gap-vertical: 120px;
+    }
+  }
+
+  .drag-text__content {
     overflow: hidden;
     position: relative;
     height: 200px;
     width: 100%;
   }
+
   .drag-text__wrap {
     position: relative;
     overflow: visible;
   }
+
   .drag-text__text {
     position: absolute;
     top: 0;

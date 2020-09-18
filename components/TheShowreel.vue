@@ -6,20 +6,48 @@
       </div>
     </div>
 
-    <div ref="container" class="showreel__video">
-      <img src="/img/video.jpg" width="1682" height="774" alt="">
+    <div ref="container" class="showreel__container" @click="isPlay = !isPlay">
+      <video
+        ref="videoPlayer"
+        class="video-js  showreel__video"
+        width="1280"
+        height="720"
+        controls
+        poster="/img/video.jpg"
+        @click="playVideo">
+        <source src="/video/showreel.mp4" type="video/mp4">
+      </video>
       <div ref="target" class="showreel__target">
-         <span>Play</span>
+         <span v-if="isPlay">Play</span>
+         <span v-else>Pause</span>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-  import {gsap} from 'gsap'
+  import videojs from 'video.js'
+  import gsap from 'gsap'
 
   export default {
+    data() {
+      return {
+        isPlay: true,
+        player: null,
+      }
+    },
+    methods: {
+      playVideo() {
+        if (this.isPlay) {
+          this.player.play()
+        } else {
+          this.player.pause()
+        }
+      }
+    },
     mounted() {
+      this.player = videojs(this.$refs.videoPlayer)
+
       const container = this.$refs.container
       const target = this.$refs.target
       const positionTargetX = (container.offsetWidth / 2) - (target.offsetWidth / 2 - target.offsetWidth / 2)
@@ -87,13 +115,31 @@
     padding-left: var(--block-gap-horizontal, @block-gap-horizontal);
   }
 
-  .showreel__video {
+  .showreel__container {
     position: relative;
     cursor: none;
     overflow: hidden;
-    max-width: 1680px;
-    margin-left: auto;
-    margin-right: auto;
+    padding-bottom: 56.25%;
+  }
+
+  .showreel__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .vjs-poster {
+      background-size: cover;
+      cursor: none;
+    }
+
+    @media (min-width: @breakpoint-lg) {
+      .vjs-big-play-button,
+      .vjs-control-bar {
+        display: none;
+      }
+    }
   }
 
   .showreel__target {
@@ -110,5 +156,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: @breakpoint-lg - 1px) {
+      display: none;
+    }
   }
 </style>

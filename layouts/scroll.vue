@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  import 'focus-visible'
   import {gsap} from 'gsap'
 
 	export default {

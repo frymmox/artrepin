@@ -217,6 +217,15 @@
       font-size: 1.125rem;
       line-height: 1.175rem;
       font-weight: 500;
+      cursor: pointer;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-out;
+      transition-property: color, border-color;
+
+      &:hover {
+        color: @body-color;
+        border-color: @body-color;
+      }
     }
   }
 

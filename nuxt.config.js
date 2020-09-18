@@ -35,7 +35,8 @@ export default {
   css: [
     '@/static/fonts/styles.css',
     { src: '@/assets/less/main.less', lang: 'less' },
-    'swiper/swiper-bundle.min.css'
+    'swiper/swiper-bundle.min.css',
+    'video.js/dist/video-js.min.css'
   ],
   plugins: [
   ],
