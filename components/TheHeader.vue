@@ -125,7 +125,7 @@
 </template>
 
 <script>
-  import gsap from 'gsap'
+  import {gsap} from 'gsap'
   import { disablePageScroll, enablePageScroll } from 'scroll-lock'
 
   export default {

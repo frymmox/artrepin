@@ -87,7 +87,7 @@
 
 <script>
   import videojs from 'video.js'
-  import gsap from 'gsap'
+  import {gsap} from 'gsap'
 
   export default {
     data() {
