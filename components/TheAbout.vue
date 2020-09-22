@@ -72,19 +72,19 @@
   }
 
   .about__list {
-    @media (min-width: @breakpoint-lg) {
+    @media (min-width: @breakpoint-xl) {
       justify-content: space-between;
     }
   }
 
   .about__accent {
-    @media (min-width: @breakpoint-lg) {
+    @media (min-width: @breakpoint-xl) {
       width: 33.33%;
     }
   }
 
   .about__content {
-    @media (min-width: @breakpoint-lg) {
+    @media (min-width: @breakpoint-xl) {
       width: 58.33%;
     }
   }

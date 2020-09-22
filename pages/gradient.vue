@@ -6,15 +6,14 @@
           class="gradient__item  gradient__item--one"
           @mouseenter="gradient"
           @mouseleave="gradientOut">
-          <span>Think.</span>
+          <span>Ivan Repin's</span>
         </div>
         <div
           class="gradient__item  gradient__item--two"
           @mouseenter="gradientOverTwo"
           @mouseleave="gradientOutTwo">
-          <span>Create.</span>
+          <span>Creative Studio</span>
         </div>
-        <span class="gradient__item  gradient__item--three">Use it.</span>
       </h1>
     </section>
   </the-main>
@@ -35,7 +34,7 @@
         gsap.to(e.target, {
           color: 'transparent',
           backgroundImage: 'linear-gradient(to right, #0073E8, #03D9D1)',
-          duration: 0.7
+          duration: 1.5
         })
       },
       gradientOut(e) {
@@ -73,9 +72,6 @@
           })
       }
     },
-    mounted() {
-
-    }
   }
 </script>
 
@@ -94,7 +90,7 @@
 
     &--one {
       // background-image: linear-gradient(to right, #0073E8, #03D9D1);
-      color: black;
+      // color: black;
     }
 
     &--two {

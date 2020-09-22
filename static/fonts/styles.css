@@ -11,3 +11,10 @@
 	font-weight: 800;
 	font-style: normal;
 }
+
+@font-face {
+	font-family: "TT Commons";
+	src: url("/fonts/TTCommons-Thin.ttf") format("truetype");
+	font-weight: 100;
+	font-style: normal;
+}

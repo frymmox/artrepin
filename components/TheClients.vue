@@ -4,7 +4,7 @@
       <div class="grid__wrap">
         <div class="grid__list">
           <div class="grid__item">
-            <h2>Our clients say</h2>
+            <h2>Our <span class="clients__underline"><span style="position: relative;">clients</span></span> say</h2>
           </div>
         </div>
 
@@ -37,8 +37,8 @@
                         </div>
 
                         <div class="card-client__logo">
-                          <svg width="158" height="33">
-                            <use href="/img/sprite.svg#tom-farr"></use>
+                          <svg width="62" height="46">
+                            <use href="/img/sprite.svg#flyboard"></use>
                           </svg>
                         </div>
                       </div>
@@ -70,8 +70,8 @@
                         </div>
 
                         <div class="card-client__logo">
-                          <svg width="158" height="33">
-                            <use href="/img/sprite.svg#tom-farr"></use>
+                          <svg width="62" height="46">
+                            <use href="/img/sprite.svg#flyboard"></use>
                           </svg>
                         </div>
                       </div>
@@ -103,8 +103,8 @@
                         </div>
 
                         <div class="card-client__logo">
-                          <svg width="158" height="33">
-                            <use href="/img/sprite.svg#tom-farr"></use>
+                          <svg width="62" height="46">
+                            <use href="/img/sprite.svg#flyboard"></use>
                           </svg>
                         </div>
                       </div>
@@ -136,8 +136,8 @@
                         </div>
 
                         <div class="card-client__logo">
-                          <svg width="158" height="33">
-                            <use href="/img/sprite.svg#tom-farr"></use>
+                          <svg width="62" height="46">
+                            <use href="/img/sprite.svg#flyboard"></use>
                           </svg>
                         </div>
                       </div>
@@ -166,7 +166,7 @@
         slidesPerView: 'auto',
         spaceBetween: 24,
         breakpoints: {
-          768: {
+          992: {
             spaceBetween: 120,
           },
         },
@@ -187,16 +187,39 @@
 <style lang="less">
   .clients {
     background-color: #d2d6da;
+    border-radius: 0 0 24px 24px;
+  }
+
+  .clients__underline {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      right: -16px;
+      height: 42px;
+      background-image: url('/img/underline.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 0 50%;
+
+      @media (min-width: @breakpoint-md) {
+        bottom: 8px;
+      }
+    }
   }
 
   .clients__slider {
     padding-bottom: 72px;
+    // margin-bottom: 72px;
   }
 
   .clients__slide {
     width: 85% !important;
 
-    @media (min-width: @breakpoint-md) {
+    @media (min-width: @breakpoint-lg) {
       width: 66.66% !important;
     }
   }
@@ -273,6 +296,7 @@
 
     @media (min-width: @breakpoint-md) {
       width: 60%;
+      padding: 24px;
     }
   }
 

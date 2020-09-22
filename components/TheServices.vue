@@ -73,7 +73,7 @@
 
                   <div class="list-services__content">
                     <div class="list-services__title">
-                      {{ item.title }}
+                      <span>{{ item.title }}</span>
 
                       <span class="icon">
                         <svg width="12" height="12">
@@ -175,22 +175,23 @@
   .services {
     background-color: @body-color;
     color: #fff;
+    border-radius: 0 0 24px 24px;
   }
 
   .services__list {
-    @media (min-width: @breakpoint-lg) {
+    @media (min-width: @breakpoint-xl) {
       justify-content: space-between;
     }
   }
 
   .services__accent {
-    @media (min-width: @breakpoint-lg) {
+    @media (min-width: @breakpoint-xl) {
       width: 33.33%;
     }
   }
 
   .services__content {
-    @media (min-width: @breakpoint-lg) {
+    @media (min-width: @breakpoint-xl) {
       width: 58.33%;
     }
   }
@@ -222,7 +223,7 @@
       }
     }
 
-    @media (min-width: @breakpoint-lg) {
+    @media (min-width: @breakpoint-xl) {
       margin-bottom: 88px;
     }
   }
@@ -233,12 +234,14 @@
       position: absolute;
     }
 
-    @media (max-width: @breakpoint-lg - 1px) {
+    @media (max-width: @breakpoint-xl - 1px) {
       display: none;
     }
   }
 
   .services__text {
+    margin-bottom: 96px;
+
     p {
       &:first-child {
         margin-bottom: 24px;
@@ -251,11 +254,28 @@
   }
   // List services
 
+  .list-services__wrap {
+    &:hover > * {
+      opacity: 0.5;
+    }
+
+    &:hover > *:hover {
+      opacity: 1;
+
+      .icon {
+        opacity: 1;
+      }
+    }
+  }
+
   .list-services__item {
     display: flex;
     padding-top: 42px;
     padding-bottom: 42px;
     border-top: 1px solid #98A5B1;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-out;
+    transition-property: opacity;
 
     @media (max-width: @breakpoint-md - 1px) {
       padding-top: 32px;
@@ -294,6 +314,7 @@
   }
 
   .list-services__content {
+    width: 100%;
     @media (max-width: @breakpoint-md - 1px) {
       width: 75%;
     }
@@ -302,6 +323,7 @@
   .list-services__title {
     font-size: 5rem;
     line-height: 5.75rem;
+    display: flex;
 
     @media (max-width: @breakpoint-md - 1px) {
       font-size: 2.5rem;
@@ -310,12 +332,17 @@
     }
 
     .icon {
-      float: right;
+      align-self: flex-start;
+      margin-left: auto;
+      flex-shrink: 0;
+      transition-duration: 0.35s;
+      transition-timing-function: ease-out;
+      transition-property: opacity;
     }
 
     @media (min-width: @breakpoint-md) {
       .icon {
-        display: none;
+        opacity: 0;
       }
     }
   }

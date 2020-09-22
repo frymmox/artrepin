@@ -28,12 +28,12 @@
             <li class="header__toggle">
               <button
                 type="button"
-                @click="toggleCollapse">
+                @click="showHeader">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                   <path d="M14.239 3.88235C14.239 1.73819 15.9763 0 18.1194 0C20.2625 0 21.9998 1.73819 21.9998 3.88235C21.9998 6.02652 20.2625 7.76471 18.1194 7.76471C15.9763 7.76471 14.239 6.02652 14.239 3.88235Z" fill="#131315"/>
                   <path d="M0.0107422 3.88235C0.0107422 1.73819 1.74807 0 3.89117 0C6.03427 0 7.7716 1.73819 7.7716 3.88235C7.7716 6.02652 6.03427 7.76471 3.89117 7.76471C1.74807 7.76471 0.0107422 6.02652 0.0107422 3.88235Z" fill="#131315"/>
                   <path d="M14.239 18.1176C14.239 15.9735 15.9763 14.2353 18.1194 14.2353C20.2625 14.2353 21.9998 15.9735 21.9998 18.1176C21.9998 20.2618 20.2625 22 18.1194 22C15.9763 22 14.239 20.2618 14.239 18.1176Z" fill="#131315"/>
-                  <path d="M0.0107422 14.2353H7.7716V22H0.0107422V14.2353Z" fill="#131315"/>
+                  <path id="square-header" d="M0.0107422 14.2353H7.7716V22H0.0107422V14.2353Z" fill="#131315"/>
                 </svg>
               </button>
             </li>
@@ -76,6 +76,8 @@
                     <li
                       v-for="(item, index) in menu"
                       :key="index">
+                      <span class="header-collapse__index">(0{{index+1 }})</span>
+                      <span class="header-collapse__divider">/</span>
                       <nuxt-link
                         active-class="active"
                         exact-active-class="exact"
@@ -123,6 +125,7 @@
 </template>
 
 <script>
+  import gsap from 'gsap'
   import { disablePageScroll, enablePageScroll } from 'scroll-lock'
 
   export default {
@@ -177,18 +180,14 @@
         disablePageScroll()
       },
       hideCollapse() {
+        gsap.set('#square-header', {scale: 1, x: 0, y: 0})
         this.isCollapsed = false
         enablePageScroll()
       },
-      toggleCollapse() {
-        this.isCollapsed = !this.isCollapsed
-
-        if (this.isCollapsed) {
-          this.showCollapse()
-        } else {
-          this.hideCollapse()
-        }
-      },
+      showHeader() {
+        const tl = gsap.timeline({onComplete: this.showCollapse})
+        tl.to('#square-header', {scale: 400, x: -2400, y: -500, duration: 1, ease: 'expo.in'})
+      }
     },
   }
 </script>
@@ -196,6 +195,7 @@
 <style lang="less">
   .header {
     color: #fff;
+    background-color: #fff;
 
     @media (min-width: @breakpoint-xl) {
       padding: 48px 80px;
@@ -211,7 +211,7 @@
   .header__fold {
     @media (max-width: @breakpoint-xl - 1px) {
       background-color: #fff;
-      padding: 40px 24px;
+      padding: 40px 16px;
       width: 100%;
       z-index: 1;
     }
@@ -254,11 +254,27 @@
         line-height: 3.5rem;
       }
 
+      li {
+        transition-duration: 0.35s;
+        transition-timing-function: ease-out;
+        transition-property: opacity;
+        display: flex;
+        align-items: baseline;
+      }
+
       a {
         color: #fff;
+      }
 
-        &:hover {
-          color: #98A5B1;
+      &:hover > * {
+        opacity: 0.5;
+      }
+
+      &:hover > *:hover {
+        opacity: 1;
+
+        .icon {
+          opacity: 1;
         }
       }
     }
@@ -270,6 +286,12 @@
 
   .header__toggle {
     margin-left: 10%;
+
+    svg {
+      overflow: visible;
+      position: relative;
+      z-index: 1;
+    }
   }
 
   .header__collapse {
@@ -277,7 +299,7 @@
     top: 0;
     right: 0;
     left: 0;
-    bottom: 0;
+    height: 100vh;
     background-color: @body-color;
     opacity: 0;
     visibility: hidden;
@@ -299,6 +321,7 @@
 
     @media (min-width: @breakpoint-md) {
       margin-right: 8.33%;
+      align-self: flex-end;
     }
   }
 
@@ -368,6 +391,27 @@
       flex-direction: column;
       align-items: flex-end;
       margin-right: 22px;
+    }
+  }
+
+  .header-collapse__index {
+    color: #98A5B1;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    margin-right: 0.4em;
+
+    @media (max-width: @breakpoint-md - 1px) {
+      display: none;
+    }
+  }
+
+  .header-collapse__divider {
+    color: #98A5B1;
+    font-weight: 100;
+    margin-right: 0.2em;
+
+    @media (max-width: @breakpoint-md - 1px) {
+      display: none;
     }
   }
 

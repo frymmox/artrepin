@@ -2,6 +2,8 @@
   <the-main>
     <the-header />
 
+    <gradient-title />
+
     <the-showreel />
 
     <the-about />
@@ -25,6 +27,7 @@
 <script>
   import TheMain from "@/components/TheMain"
   import TheHeader from "@/components/TheHeader"
+  import GradientTitle from "~/components/GradientTitle"
   import TheShowreel from "@/components/TheShowreel"
   import TheAbout from "@/components/TheAbout"
   import DragText from "@/components/DragText"
@@ -40,6 +43,7 @@
 		components: {
       TheMain,
       TheHeader,
+      GradientTitle,
       TheShowreel,
       TheAbout,
       DragText,

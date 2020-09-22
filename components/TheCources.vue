@@ -54,12 +54,12 @@
           </div>
         </div>
 
-        <div class="grid__list">
+        <div class="grid__list  cources__media">
           <div class="grid__item">
             <div ref="container" class="cources__container" @click="isPlay = !isPlay">
               <video
                 ref="videoPlayer"
-                class="video-js  showreel__video"
+                class="video-js  cources__video"
                 width="1280"
                 height="720"
                 controls
@@ -72,6 +72,12 @@
                 <span v-else>Pause</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="grid__list">
+          <div class="grid__item  cources__desc">
+            <p>The mission of&nbsp;this course is&nbsp;to&nbsp;teach beginners and hold the hand of&nbsp;those who are marking time and do&nbsp;not know how to&nbsp;start making money.</p>
           </div>
         </div>
       </div>
@@ -142,7 +148,7 @@
         })
       })
 
-      container.addEventListener('mouseout', (e) => {
+      container.addEventListener('mouseleave', (e) => {
         let x = (container.offsetWidth / 2) - (target.offsetWidth / 2 - target.offsetWidth / 2)
         let y = (container.offsetHeight / 2) - (target.offsetHeight / 2 - target.offsetHeight / 2)
 
@@ -159,28 +165,29 @@
 <style lang="less">
   .cources {
     background-color: #fff;
+    border-radius: 0 0 24px 24px;
   }
 
   .cources__list {
-    margin-bottom: 160px;
+    margin-bottom: 64px;
 
-    @media (max-width: @breakpoint-md - 1px) {
-      margin-bottom: 64px;
+    @media (min-width: @breakpoint-xl) {
+      margin-bottom: 160px;
     }
 
-    @media (min-width: @breakpoint-lg) {
+    @media (min-width: @breakpoint-xl) {
       justify-content: space-between;
     }
   }
 
   .cources__accent {
-    @media (min-width: @breakpoint-lg) {
+    @media (min-width: @breakpoint-xl) {
       width: 33.33%;
     }
   }
 
   .cources__content {
-    @media (min-width: @breakpoint-lg) {
+    @media (min-width: @breakpoint-xl) {
       width: 58.33%;
     }
   }
@@ -221,6 +228,12 @@
     }
   }
 
+  .cources__media {
+    @media (min-width: @breakpoint-xl) {
+      margin-bottom: 96px;
+    }
+  }
+
   .cources__info {
     margin-bottom: 40px;
 
@@ -257,6 +270,8 @@
   }
 
   .cources__button {
+    white-space: nowrap;
+
     @media (max-width: @breakpoint-md - 1px) {
       width: 60%;
       margin-left: auto;
@@ -273,8 +288,37 @@
   }
 
   .cources__video {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
+
+    .vjs-poster {
+      background-size: cover;
+      cursor: none;
+    }
+
+    @media (min-width: @breakpoint-lg) {
+      .vjs-big-play-button,
+      .vjs-control-bar {
+        display: none;
+      }
+    }
+  }
+
+  .cources__desc {
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+    width: 75%;
+    margin-left: 25%;
+
+    @media (min-width: @breakpoint-md) {
+      width: 41.66%;
+      margin-left: 41.66%;
+      font-size: 1.85rem;
+      line-height: 2.25rem;
+    }
   }
 
   // Cources-table

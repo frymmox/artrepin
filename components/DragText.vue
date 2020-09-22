@@ -37,6 +37,7 @@
 <style lang="less">
   .drag-text {
     background-color: #fff;
+
     @media (min-width: @breakpoint-xl) {
       --block-gap-vertical: 120px;
     }
@@ -47,6 +48,10 @@
     position: relative;
     height: 200px;
     width: 100%;
+
+    @media (max-width: @breakpoint-md - 1px) {
+      height: 96px;
+    }
   }
 
   .drag-text__wrap {
@@ -61,5 +66,10 @@
     font-size: 14.125rem;
     line-height: 17rem;
     white-space: nowrap;
+
+    @media (max-width: @breakpoint-md - 1px) {
+      font-size: 5rem;
+      line-height: 6rem;
+    }
   }
 </style>

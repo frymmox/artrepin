@@ -205,7 +205,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-right: -8px;
-    margin-left: -8px;
+    margin-bottom: -8px;
 
     li {
       margin-right: 8px;

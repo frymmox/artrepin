@@ -1,11 +1,5 @@
 <template>
   <section class="showreel">
-    <div class="showreel__wrap">
-      <div class="showreel__title">
-        <h1>Ivan Repin's Creative Studio</h1>
-      </div>
-    </div>
-
     <div ref="container" class="showreel__container" @click="isPlay = !isPlay">
       <video
         ref="videoPlayer"
@@ -88,7 +82,7 @@
         })
       })
 
-      container.addEventListener('mouseout', (e) => {
+      container.addEventListener('mouseleave', (e) => {
         let x = (container.offsetWidth / 2) - (target.offsetWidth / 2 - target.offsetWidth / 2)
         let y = (container.offsetHeight / 2) - (target.offsetHeight / 2 - target.offsetHeight / 2)
 
@@ -105,14 +99,6 @@
 <style lang="less">
   .showreel {
     background-color: #fff;
-  }
-
-  .showreel__wrap {
-    max-width: 1680px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-right: var(--block-gap-horizontal, @block-gap-horizontal);
-    padding-left: var(--block-gap-horizontal, @block-gap-horizontal);
   }
 
   .showreel__container {
