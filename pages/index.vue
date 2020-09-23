@@ -46,7 +46,7 @@
       <div class="cover-section__wrapper">
         <div class="cover-section__bounds  cover-section__bounds--4">
           <div class="cover-section__content  cover-section__content--4">
-            <the-clients />
+            <the-clients ref="clients" />
           </div>
         </div>
       </div>
@@ -106,7 +106,9 @@
 
       gsap.set(".cover-section__bounds--3", {height: document.querySelector('.cover-section__content--3').offsetHeight});
 
-      gsap.set(".cover-section__bounds--4", {height: document.querySelector('.cover-section__content--4').offsetHeight});
+      // gsap.set(".cover-section__bounds--4", {height: document.querySelector('.cover-section__content--4').offsetHeight});
+
+      gsap.set(".cover-section__bounds--4", {height: this.$refs.clients.offsetHeight});
 
       const animation = gsap.timeline();
       animation.to(".cover-section__bounds--1", {y: -document.querySelector('.cover-section__bounds--1').offsetHeight, duration: 5, ease: 'power1.inOut'})
@@ -166,9 +168,7 @@
     overflow: hidden;
 
     &--5 {
-      @media (min-width: @breakpoint-md) {
-        bottom: 0;
-      }
+      bottom: 0;
     }
   }
 

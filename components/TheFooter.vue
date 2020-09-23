@@ -92,9 +92,9 @@
     padding-left: var(--block-gap-horizontal, @block-gap-horizontal);
     padding-bottom: var(--block-gap-horizontal, @block-gap-vertical);
 
-    // @media (max-width: @breakpoint-md - 1px) {
-    //   --block-gap-vertical: 24px;
-    // }
+    @media (max-width: @breakpoint-md - 1px) {
+      padding-bottom: 32px;
+    }
   }
 
   .footer__wrap {
