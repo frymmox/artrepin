@@ -180,13 +180,13 @@
         disablePageScroll()
       },
       hideCollapse() {
-        gsap.set('#square-header', {scale: 1, x: 0, y: 0})
         this.isCollapsed = false
+        gsap.to('#square-header', {scale: 1, x: 0, y: 0, duration: 0.6, ease: 'expo.out'})
         enablePageScroll()
       },
       showHeader() {
         const tl = gsap.timeline({onComplete: this.showCollapse})
-        tl.to('#square-header', {scale: 400, x: -2400, y: -500, duration: 1, ease: 'expo.in'})
+        tl.to('#square-header', {scale: 400, x: -2400, y: -500, duration: 0.6, ease: 'expo.in'})
       }
     },
   }
