@@ -4,16 +4,15 @@
       <div class="grid__wrap">
         <div class="grid__list">
           <div class="grid__item">
-            <h1>
+            <h1 class="gradient-title__text">
               <div
-                class="gradient-title__item"
-                @mouseenter="gradientOverFirst"
-                @mouseleave="gradientOutFirst">
+                ref="gradientFirst"
+                class="gradient-title__item">
                 Ivan Repin's
               </div>
               <div
+                ref="gradientLast"
                 class="gradient-title__item  gradient-title__item--last"
-                @mouseenter="gradientOverLast"
                 @mouseleave="gradientOutLast">
                 Creative Studio
               </div>
@@ -27,6 +26,7 @@
 </template>
 
 <script>
+  import _ from 'lodash'
   import {gsap} from 'gsap'
 
   export default {
@@ -35,13 +35,13 @@
         gsap.to(e.target, {
           color: 'transparent',
           backgroundImage: 'linear-gradient(to right, #0073E8, #03D9D1)',
-          duration: 1
+          duration: 0.5
         })
       },
       gradientOutFirst(e) {
         gsap.to(e.target, {
           color: '#131315',
-          duration: 0.5
+          duration: 0.25
         })
       },
       gradientOverLast(e) {
@@ -50,20 +50,29 @@
           .to(e.target, {
             color: 'transparent',
             backgroundImage: 'linear-gradient(to right, #0073E8, #03D9D1)',
-            duration: 0.4
+            duration: 0.2
           })
           .to(e.target, {
             color: 'transparent',
             backgroundImage: 'linear-gradient(to right, #781FBB, #FF2478)',
-            duration: 0.6
+            duration: 0.3
           })
       },
       gradientOutLast(e) {
         gsap.to(e.target, {
           color: '#131315',
-          duration: 0.5
+          duration: 0.25
         })
       }
+    },
+    mounted() {
+      this.$refs.gradientFirst.addEventListener('mouseenter', _.debounce(this.gradientOverFirst, 1000, {leading: true, trailing: false}))
+
+      this.$refs.gradientFirst.addEventListener('mouseleave', _.throttle(this.gradientOutFirst, 200))
+
+      this.$refs.gradientLast.addEventListener('mouseenter', _.debounce(this.gradientOverLast, 1000, {leading: true, trailing: false}))
+
+      this.$refs.gradientLast.addEventListener('mouseleave', _.throttle(this.gradientOutLast, 200, {trailing: false}))
     }
   }
 </script>
@@ -72,6 +81,10 @@
   .gradient-title {
     padding-bottom: 0;
     background-color: #fff;
+  }
+
+  .gradient-title__text {
+    line-height: 8.625rem;
   }
 
   .gradient-title__item {
