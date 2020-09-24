@@ -236,8 +236,8 @@
 
     &--large {
       @media (min-width: @breakpoint-lg) {
-      width: 66.66%;
-    }
+        width: 66.66%;
+      }
     }
   }
 

@@ -13,8 +13,13 @@
 	export default {
     name: "ScrollLayout",
     mounted() {
-      gsap.set(this.$el, {height: window.innerHeight})
-      // gsap.set(this.$el, {height: document.documentElement.clientHeight})
+      let vh = window.innerHeight
+      gsap.set(this.$el, {height: vh})
+
+      window.addEventListener('resize', () => {
+        vh = window.innerHeight
+        gsap.set(this.$el, {height: vh})
+      })
     }
 	};
 </script>

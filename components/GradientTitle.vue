@@ -85,6 +85,10 @@
 
   .gradient-title__text {
     line-height: 8.625rem;
+
+    @media (max-width: @breakpoint-md - 1px) {
+      line-height: 4.125rem;
+    }
   }
 
   .gradient-title__item {
