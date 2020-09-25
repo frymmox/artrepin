@@ -1,5 +1,7 @@
 <template>
-  <header class="header">
+  <header
+    class="header"
+    :class="{ 'header--dark': isDarken }">
     <div class="header__wrap">
       <div class="header__list">
         <div class="header__fold">
@@ -7,7 +9,8 @@
             <li class="header__logo">
               <nuxt-link to="/">
                 <svg width="171" height="25">
-                  <use href="/img/sprite.svg#logo"></use>
+                  <use v-if="isDarken" href="/img/sprite.svg#logo-white"></use>
+                  <use v-else href="/img/sprite.svg#logo"></use>
                 </svg>
               </nuxt-link>
             </li>
@@ -29,7 +32,14 @@
               <button
                 type="button"
                 @click="showHeader">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <svg v-if="isDarken" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M14.239 3.88235C14.239 1.73819 15.9763 0 18.1194 0C20.2625 0 21.9998 1.73819 21.9998 3.88235C21.9998 6.02652 20.2625 7.76471 18.1194 7.76471C15.9763 7.76471 14.239 6.02652 14.239 3.88235Z" fill="#fff"/>
+                  <path d="M0.0107422 3.88235C0.0107422 1.73819 1.74807 0 3.89117 0C6.03427 0 7.7716 1.73819 7.7716 3.88235C7.7716 6.02652 6.03427 7.76471 3.89117 7.76471C1.74807 7.76471 0.0107422 6.02652 0.0107422 3.88235Z" fill="#fff"/>
+                  <path d="M14.239 18.1176C14.239 15.9735 15.9763 14.2353 18.1194 14.2353C20.2625 14.2353 21.9998 15.9735 21.9998 18.1176C21.9998 20.2618 20.2625 22 18.1194 22C15.9763 22 14.239 20.2618 14.239 18.1176Z" fill="#fff"/>
+                  <path id="square-header" d="M0.0107422 14.2353H7.7716V22H0.0107422V14.2353Z" fill="#fff"/>
+                </svg>
+
+                <svg v-else xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                   <path d="M14.239 3.88235C14.239 1.73819 15.9763 0 18.1194 0C20.2625 0 21.9998 1.73819 21.9998 3.88235C21.9998 6.02652 20.2625 7.76471 18.1194 7.76471C15.9763 7.76471 14.239 6.02652 14.239 3.88235Z" fill="#131315"/>
                   <path d="M0.0107422 3.88235C0.0107422 1.73819 1.74807 0 3.89117 0C6.03427 0 7.7716 1.73819 7.7716 3.88235C7.7716 6.02652 6.03427 7.76471 3.89117 7.76471C1.74807 7.76471 0.0107422 6.02652 0.0107422 3.88235Z" fill="#131315"/>
                   <path d="M14.239 18.1176C14.239 15.9735 15.9763 14.2353 18.1194 14.2353C20.2625 14.2353 21.9998 15.9735 21.9998 18.1176C21.9998 20.2618 20.2625 22 18.1194 22C15.9763 22 14.239 20.2618 14.239 18.1176Z" fill="#131315"/>
@@ -41,8 +51,8 @@
         </div>
 
         <div
-          :class="{ 'header__collapse--open': isCollapsed }"
-          class="header__collapse  header-collapse">
+          class="header__collapse  header-collapse"
+          :class="{ 'header__collapse--open': isCollapsed }">
           <div class="header-collapse__image  header-collapse__image--desk">
             <img src="/img/abstract-figures.svg" alt="">
           </div>
@@ -135,7 +145,7 @@
         menuDesktop: [
           {
             name: 'Portfolio',
-            url: '#',
+            url: 'portfolio-2',
           },
           {
             name: 'Studio',
@@ -174,6 +184,12 @@
         ]
       }
     },
+    props: {
+      isDarken: {
+        type: Boolean,
+        default: false,
+      },
+    },
     methods: {
       showCollapse() {
         this.isCollapsed = true
@@ -200,6 +216,12 @@
     @media (min-width: @breakpoint-xl) {
       padding: 48px 80px;
     }
+
+    &--dark {
+      position: relative;
+      background-color: transparent;
+      z-index: 1;
+    }
   }
 
   .header__wrap {
@@ -214,6 +236,10 @@
       padding: 40px 16px;
       width: 100%;
       z-index: 1;
+
+      .header--dark & {
+        background-color: transparent;
+      }
     }
   }
 
@@ -240,7 +266,16 @@
         &:hover {
           color: #98A5B1;
         }
+
+        .header--dark & {
+          color: #fff;
+
+          &:hover {
+            color: #98A5B1;
+          }
+        }
       }
+
     }
 
     &--collapse {

@@ -106,8 +106,6 @@
 
       gsap.set(".cover-section__bounds--3", {height: document.querySelector('.cover-section__content--3').offsetHeight});
 
-      // gsap.set(".cover-section__bounds--4", {height: document.querySelector('.cover-section__content--4').offsetHeight});
-
       gsap.set(".cover-section__bounds--4", {height: this.$refs.clients.offsetHeight});
 
       const animation = gsap.timeline();
@@ -127,6 +125,9 @@
         scrub: true,
         end: 'bottom bottom',
       })
+    },
+    beforeDestroy() {
+      gsap.set(document.body, {height: 'auto'});
     }
   }
 </script>
